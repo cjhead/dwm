@@ -1,35 +1,35 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static unsigned int borderpx  = 1;        /* border pixel of windows */
-static unsigned int snap      = 32;       /* snap pixel */
+static unsigned int borderpx        = 1;        /* border pixel of windows */
+static unsigned int snap            = 32;       /* snap pixel */
 static const unsigned int gappih    = 0;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 0;       /* vert inner gap between windows */
 static const unsigned int gappoh    = 0;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 0;       /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
-static int showbar            = 1;        /* 0 means no bar */
-static int topbar             = 1;        /* 0 means bottom bar */
+static int showbar                  = 1;        /* 0 means no bar */
+static int topbar                   = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = {
     "Hack Nerd Font:size=10:antialias=true:autohint=true",
     "JoyPixels:pixelsize=12:antialias=true:autohint=true" };
-static char dmenufont[]       = "Ubuntu Mono:size=12";
+static char dmenufont[]             = "Ubuntu Mono:size=12";
 static char col0[]                  = "#ffffff";
-static char col1[]            = "#ffffff";
-static char col2[]            = "#ffffff";
-static char col3[]            = "#ffffff";
-static char col4[]            = "#ffffff";
-static char col5[]            = "#ffffff";
-static char col6[]            = "#ffffff";
-static char col7[]            = "#ffffff";
-static char col8[]            = "#ffffff";
-static char col9[]            = "#ffffff";
-static char col10[]            = "#ffffff";
-static char col11[]            = "#ffffff";
-static char col12[]            = "#ffffff";
-static char col13[]            = "#ffffff";
-static char col14[]            = "#ffffff";
-static char col15[]            = "#ffffff";
+static char col1[]                  = "#ffffff";
+static char col2[]                  = "#ffffff";
+static char col3[]                  = "#ffffff";
+static char col4[]                  = "#ffffff";
+static char col5[]                  = "#ffffff";
+static char col6[]                  = "#ffffff";
+static char col7[]                  = "#ffffff";
+static char col8[]                  = "#ffffff";
+static char col9[]                  = "#ffffff";
+static char col10[]                 = "#ffffff";
+static char col11[]                 = "#ffffff";
+static char col12[]                 = "#ffffff";
+static char col13[]                 = "#ffffff";
+static char col14[]                 = "#ffffff";
+static char col15[]                 = "#ffffff";
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
@@ -39,24 +39,24 @@ static char selbgcolor[]            = "#005577";
 
 static char *colors[][3] = {
        /*               fg           bg           border   */
-    [SchemeNorm]  = { normfgcolor, normbgcolor, normbordercolor },/* \x0b white        */
-    [SchemeSel]   = { selfgcolor,  selbgcolor,  selbordercolor  },/* \x0c              */
-    [SchemeCol0]  = { col0,        normbgcolor, normbordercolor },/* \x0d black        */
-    [SchemeCol1]  = { col1,        normbgcolor, normbordercolor },/* \x0e red          */
-    [SchemeCol2]  = { col2,        normbgcolor, normbordercolor },/* \x0f light green  */
-    [SchemeCol3]  = { col3,        normbgcolor, normbordercolor },/* \x10 yellow       */
-    [SchemeCol4]  = { col4,        normbgcolor, normbordercolor },/* \x11 white        */
-    [SchemeCol5]  = { col5,        normbgcolor, normbordercolor },/* \x12 magenta      */
-    [SchemeCol6]  = { col6,        normbgcolor, normbordercolor },/* \x13 white        */
-    [SchemeCol7]  = { col7,        normbgcolor, normbordercolor },/* \x14 white        */
-    [SchemeCol8]  = { col8,        normbgcolor, normbordercolor },/* \x15 black        */
-    [SchemeCol9]  = { col8,        normbgcolor, normbordercolor },/* \x16 black        */
-    [SchemeCol10] = { col10,       normbgcolor, normbordercolor },/* \x17 light green  */
-    [SchemeCol11] = { col11,       normbgcolor, normbordercolor },/* \x18 yellow       */
-    [SchemeCol12] = { col12,       normbgcolor, normbordercolor },/* \x19 light blue   */
-    [SchemeCol13] = { col13,       normbgcolor, normbordercolor },/* \x1a magenta      */
-    [SchemeCol14] = { col14,       normbgcolor, normbordercolor },/* \x1b lighter blue */
-    [SchemeCol15] = { col15,       normbgcolor, normbordercolor },/* \x1c white        */
+    [SchemeNorm]  = { normfgcolor, normbgcolor, normbordercolor }, /* \x0b white        */
+    [SchemeSel]   = { selfgcolor,  selbgcolor,  selbordercolor  }, /* \x0c              */
+    [SchemeCol0]  = { col0,        normbgcolor, normbordercolor }, /* \x0d black        */
+    [SchemeCol1]  = { col1,        normbgcolor, normbordercolor }, /* \x0e red          */
+    [SchemeCol2]  = { col2,        normbgcolor, normbordercolor }, /* \x0f light green  */
+    [SchemeCol3]  = { col3,        normbgcolor, normbordercolor }, /* \x10 yellow       */
+    [SchemeCol4]  = { col4,        normbgcolor, normbordercolor }, /* \x11 white        */
+    [SchemeCol5]  = { col5,        normbgcolor, normbordercolor }, /* \x12 magenta      */
+    [SchemeCol6]  = { col6,        normbgcolor, normbordercolor }, /* \x13 white        */
+    [SchemeCol7]  = { col7,        normbgcolor, normbordercolor }, /* \x14 white        */
+    [SchemeCol8]  = { col8,        normbgcolor, normbordercolor }, /* \x15 black        */
+    [SchemeCol9]  = { col8,        normbgcolor, normbordercolor }, /* \x16 black        */
+    [SchemeCol10] = { col10,       normbgcolor, normbordercolor }, /* \x17 light green  */
+    [SchemeCol11] = { col11,       normbgcolor, normbordercolor }, /* \x18 yellow       */
+    [SchemeCol12] = { col12,       normbgcolor, normbordercolor }, /* \x19 light blue   */
+    [SchemeCol13] = { col13,       normbgcolor, normbordercolor }, /* \x1a magenta      */
+    [SchemeCol14] = { col14,       normbgcolor, normbordercolor }, /* \x1b lighter blue */
+    [SchemeCol15] = { col15,       normbgcolor, normbordercolor }, /* \x1c white        */
  };
 
 /* tagging */
@@ -73,10 +73,10 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
-static int nmaster     = 1;    /* number of clients in master area */
-static int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+static float mfact              = 0.55; /* factor of master area size [0.05..0.95] */
+static int nmaster              = 1;    /* number of clients in master area */
+static int resizehints          = 1;    /* 1 means respect size hints in tiled resizals */
+static const int lockfullscreen = 1;    /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -98,7 +98,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, "-l", "20", "-c",  NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 /*
@@ -146,6 +146,7 @@ ResourcePref resources[] = {
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+    { MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("passmenu") },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
