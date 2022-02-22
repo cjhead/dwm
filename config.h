@@ -1,38 +1,56 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
+static unsigned int borderpx  = 1;        /* border pixel of windows */
+static unsigned int snap      = 32;       /* snap pixel */
+static int showbar            = 1;        /* 0 means no bar */
+static int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char col1[]            = "#ffffff";
-static const char col2[]            = "#ffffff";
-static const char col3[]            = "#ffffff";
-static const char col4[]            = "#ffffff";
-static const char col5[]            = "#ffffff";
-static const char col6[]            = "#ffffff";
+static char dmenufont[]       = "monospace:size=10";
+static char col0[]                  = "#ffffff";
+static char col1[]            = "#ffffff";
+static char col2[]            = "#ffffff";
+static char col3[]            = "#ffffff";
+static char col4[]            = "#ffffff";
+static char col5[]            = "#ffffff";
+static char col6[]            = "#ffffff";
+static char col7[]            = "#ffffff";
+static char col8[]            = "#ffffff";
+static char col9[]            = "#ffffff";
+static char col10[]            = "#ffffff";
+static char col11[]            = "#ffffff";
+static char col12[]            = "#ffffff";
+static char col13[]            = "#ffffff";
+static char col14[]            = "#ffffff";
+static char col15[]            = "#ffffff";
+static char normbgcolor[]           = "#222222";
+static char normbordercolor[]       = "#444444";
+static char normfgcolor[]           = "#bbbbbb";
+static char selfgcolor[]            = "#eeeeee";
+static char selbordercolor[]        = "#005577";
+static char selbgcolor[]            = "#005577";
 
-enum { SchemeNorm, SchemeCol1, SchemeCol2, SchemeCol3, SchemeCol4,
-       SchemeCol5, SchemeCol6, SchemeSel }; /* color schemes */
-
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm]  = { col_gray3, col_gray1, col_gray2 },
-	[SchemeCol1]  = { col1,      col_gray1, col_gray2 },
-	[SchemeCol2]  = { col2,      col_gray1, col_gray2 },
-	[SchemeCol3]  = { col3,      col_gray1, col_gray2 },
-	[SchemeCol4]  = { col4,      col_gray1, col_gray2 },
-	[SchemeCol5]  = { col5,      col_gray1, col_gray2 },
-	[SchemeCol6]  = { col6,      col_gray1, col_gray2 },
-	[SchemeSel]   = { col_gray4, col_cyan,  col_cyan  },
-};
+static char *colors[][3] = {
+       /*               fg           bg           border   */
+    [SchemeNorm]  = { normfgcolor, normbgcolor, normbordercolor },/* \x0b white        */
+    [SchemeSel]   = { selfgcolor,  selbgcolor,  selbordercolor  },/* \x0c              */
+    [SchemeCol0]  = { col0,        normbgcolor, normbordercolor },/* \x0d black        */
+    [SchemeCol1]  = { col1,        normbgcolor, normbordercolor },/* \x0e red          */
+    [SchemeCol2]  = { col2,        normbgcolor, normbordercolor },/* \x0f light green  */
+    [SchemeCol3]  = { col3,        normbgcolor, normbordercolor },/* \x10 yellow       */
+    [SchemeCol4]  = { col4,        normbgcolor, normbordercolor },/* \x11 white        */
+    [SchemeCol5]  = { col5,        normbgcolor, normbordercolor },/* \x12 magenta      */
+    [SchemeCol6]  = { col6,        normbgcolor, normbordercolor },/* \x13 white        */
+    [SchemeCol7]  = { col7,        normbgcolor, normbordercolor },/* \x14 white        */
+    [SchemeCol8]  = { col8,        normbgcolor, normbordercolor },/* \x15 black        */
+    [SchemeCol9]  = { col8,        normbgcolor, normbordercolor },/* \x16 black        */
+    [SchemeCol10] = { col10,       normbgcolor, normbordercolor },/* \x17 light green  */
+    [SchemeCol11] = { col11,       normbgcolor, normbordercolor },/* \x18 yellow       */
+    [SchemeCol12] = { col12,       normbgcolor, normbordercolor },/* \x19 light blue   */
+    [SchemeCol13] = { col13,       normbgcolor, normbordercolor },/* \x1a magenta      */
+    [SchemeCol14] = { col14,       normbgcolor, normbordercolor },/* \x1b lighter blue */
+    [SchemeCol15] = { col15,       normbgcolor, normbordercolor },/* \x1c white        */
+ };
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -48,9 +66,9 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static int nmaster     = 1;    /* number of clients in master area */
+static int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
@@ -73,8 +91,49 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
+
+/*
+ * Xresources preferences to load at startup
+ */
+ResourcePref resources[] = {
+		// { "font",               STRING,  &font },
+		{ "dmenufont",          STRING,  &dmenufont },
+		// { "normbgcolor",        STRING,  &normbgcolor },
+		// { "normbordercolor",    STRING,  &normbordercolor },
+		// { "normfgcolor",        STRING,  &normfgcolor },
+		// { "selbgcolor",         STRING,  &selbgcolor },
+		// { "selbordercolor",     STRING,  &selbordercolor },
+		// { "selfgcolor",         STRING,  &selfgcolor },
+        { "background",         STRING,  &normbgcolor },
+        { "background",         STRING,  &normbordercolor },
+        { "foreground",         STRING,  &normfgcolor },
+        { "color0",             STRING,  &col0 },
+        { "color1",             STRING,  &col1 },
+        { "color2",             STRING,  &col2 },
+        { "color3",             STRING,  &col3 },
+        { "color4",             STRING,  &selbgcolor },
+        { "color5",             STRING,  &col5 },
+        { "color6",             STRING,  &selbordercolor },
+        { "color7",             STRING,  &col7 },
+        { "color8",             STRING,  &col8 },
+        { "color9",             STRING,  &col9 },
+        { "color10",            STRING,  &col10 },
+        { "color11",            STRING,  &col11 },
+        { "color12",            STRING,  &col12 },
+        { "color13",            STRING,  &col13 },
+        { "color14",            STRING,  &col14 },
+        { "color15",            STRING,  &col15 },
+        { "background",         STRING,  &selfgcolor },
+		{ "borderpx",          	INTEGER, &borderpx },
+		{ "snap",          		INTEGER, &snap },
+		{ "showbar",          	INTEGER, &showbar },
+		{ "topbar",          	INTEGER, &topbar },
+		{ "nmaster",          	INTEGER, &nmaster },
+		{ "resizehints",       	INTEGER, &resizehints },
+		{ "mfact",      	 	FLOAT,   &mfact },
+};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -111,7 +170,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
 };
 
 /* button definitions */
@@ -132,4 +191,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
