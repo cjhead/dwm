@@ -137,6 +137,7 @@ ResourcePref resources[] = {
 		{ "mfact",      	 	FLOAT,   &mfact },
 };
 
+#include <X11/XF86keysym.h>
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -173,6 +174,14 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
+
+    { 0,                            XK_Print,  spawn,          SHCMD("maimfull") },
+    { ShiftMask,                    XK_Print,  spawn,          SHCMD("maimclip") },
+    { 0, XF86XK_AudioMute,                     spawn,          SHCMD("pamixer -t; sigdwmblocks 1") },
+    { 0, XF86XK_AudioRaiseVolume,              spawn,          SHCMD("pamixer -i 5; sigdwmblocks 1") },
+    { 0, XF86XK_AudioLowerVolume,              spawn,          SHCMD("pamixer -d 5; sigdwmblocks 1") },
+    { MODKEY|ShiftMask,             XK_Right,  spawn,          SHCMD("brightnessctl -q set +10%") },
+    { MODKEY|ShiftMask,             XK_Left,   spawn,          SHCMD("brightnessctl -q set 10%-") },
 };
 
 /* button definitions */
