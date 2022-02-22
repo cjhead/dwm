@@ -455,8 +455,8 @@ attachstack(Client *c)
 void
 buttonpress(XEvent *e)
 {
-        int i, x;
-        unsigned int click;
+    int i, x;
+    unsigned int click;
 	Arg arg = {0};
 	Client *c;
 	Monitor *m;
@@ -469,22 +469,31 @@ buttonpress(XEvent *e)
 		focus(NULL);
 	}
 	if (ev->window == selmon->barwin) {
-                if (ev->x < ble - blw) {
-                        i = -1, x = -ev->x;
-                        do
-                                x += TEXTW(tags[++i]);
-                        while (x <= 0);
-                        click = ClkTagBar;
-                        arg.ui = 1 << i;
-                } else if (ev->x < ble)
-                        click = ClkLtSymbol;
-                else if (ev->x < selmon->ww - wstext)
-                        click = ClkWinTitle;
-                else if ((x = selmon->ww - RSPAD - ev->x) > 0 && (x -= wstext - LSPAD - RSPAD) <= 0) {
-                        updatedwmblockssig(x);
-                        click = ClkStatusText;
-                } else
-                        return;
+        if (ev->x < ble - blw) {
+            unsigned int occ = m->tagset[m->seltags];
+
+            for (c = m->clients; c; c = c->next)
+                if (c->tags != (~0 & TAGMASK))
+                        occ |= c->tags;
+
+            i = -1, x = -ev->x;
+            do {
+                do
+                    i++;
+                while (!(occ & 1 << i));
+                x += TEXTW(tags[i]);
+            } while (x <= 0);
+            click = ClkTagBar;
+            arg.ui = 1 << i;
+        } else if (ev->x < ble)
+            click = ClkLtSymbol;
+        else if (ev->x < selmon->ww - wstext)
+            click = ClkWinTitle;
+        else if ((x = selmon->ww - RSPAD - ev->x) > 0 && (x -= wstext - LSPAD - RSPAD) <= 0) {
+            updatedwmblockssig(x);
+            click = ClkStatusText;
+        } else
+            return;
 	} else if ((c = wintoclient(ev->window))) {
 		focus(c);
 		restack(selmon);
@@ -742,7 +751,7 @@ drawbar(Monitor *m)
 	int x, w;
 	int boxs = drw->fonts->h / 9;
 	int boxw = drw->fonts->h / 6 + 2;
-	unsigned int i, occ = 0, urg = 0;
+	unsigned int i, occ, urg;
 	Client *c;
 
 	if (!m->showbar)
@@ -778,20 +787,19 @@ drawbar(Monitor *m)
                 drw_rect(drw, x, 0, m->ww - x, bh, 1, 1); /* to keep right padding clean */
 	}
 
-	for (c = m->clients; c; c = c->next) {
-		occ |= c->tags;
+	for (occ = m->tagset[m->seltags], urg = 0, c = m->clients; c; c = c->next) {
+            if (c->tags != (~0 & TAGMASK))
+                    occ |= c->tags;
 		if (c->isurgent)
 			urg |= c->tags;
 	}
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
+		if (!(occ & 1 << i))
+            continue;
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
-		if (occ & 1 << i)
-			drw_rect(drw, x + boxs, boxs, boxw, boxw,
-				m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
-				urg & 1 << i);
 		x += w;
 	}
 	w = TEXTW(m->ltsymbol);
