@@ -1,6 +1,8 @@
 # My Build of [DWM](https://dwm.suckless.org/)
 This is my personal build of the dwm window manager.
 
+![Screenshot](https://github.com/cjhead/dwm/blob/main/assets/dwm_01.png)
+
 ## Table of Contents
 - [Statusbar](#statusbar)
 - [Patches](#patches)
