@@ -14,7 +14,7 @@ static int topbar                   = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = {
     "Hack Nerd Font:size=10:antialias=true:autohint=true",
     "JoyPixels:pixelsize=12:antialias=true:autohint=true" };
-static char dmenufont[]             = "Ubuntu Mono:size=12";
+static char dmenufont[]             = "Hack Nerd Font:size=10:antialias=true:autohint=true";
 static char col0[]                  = "#ffffff";
 static char col1[]                  = "#ffffff";
 static char col2[]                  = "#ffffff";
