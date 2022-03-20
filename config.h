@@ -206,6 +206,7 @@ static Key keys[] = {
 
     { 0,                            XK_Print,  spawn,          SHCMD("maimfull") },
     { ShiftMask,                    XK_Print,  spawn,          SHCMD("maimclip") },
+    { MODKEY,                       XK_Print,  spawn,          SHCMD("maimcb") },
     { 0, XF86XK_AudioMute,                     spawn,          SHCMD("pamixer -t; sigdwmblocks 1") },
     { 0, XF86XK_AudioRaiseVolume,              spawn,          SHCMD("pamixer -i 5; sigdwmblocks 1") },
     { 0, XF86XK_AudioLowerVolume,              spawn,          SHCMD("pamixer -d 5; sigdwmblocks 1") },
