@@ -68,13 +68,14 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",      NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Firefox",   NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-	{ "St",        NULL,     NULL,           0,         0,          1,           0,        -1 },
-    { "Brave",     NULL,     NULL,           0,         0,          0,           1,        -1 },
-    { "Tk",        NULL,     NULL,           0,         1,          0,           1,        -1 },
-    { "python3.9", NULL,     NULL,           0,         1,          0,           1,        -1 },
+	/* class            instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
+	{ "Gimp",             NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "Firefox",          NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
+	{ "St",               NULL,     NULL,           0,         0,          1,           0,        -1 },
+    { "Brave",            NULL,     NULL,           0,         0,          0,           1,        -1 },
+    { "Tk",               NULL,     NULL,           0,         1,          0,           1,        -1 },
+    { "python3.9",        NULL,     NULL,           0,         1,          0,           1,        -1 },
+    { "gnome-calculator", NULL,     NULL,           0,         1,          0,           1,        -1 },
 	{ NULL,        NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
