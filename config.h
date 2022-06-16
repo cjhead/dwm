@@ -69,20 +69,20 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class            instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",             NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Firefox",          NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-	{ "St",               NULL,     NULL,           0,         0,          1,           0,        -1 },
-    { "Brave",            NULL,     NULL,           0,         0,          0,           1,        -1 },
-    { "Tk",               NULL,     NULL,           0,         1,          0,           1,        -1 },
-    { "python3.9",        NULL,     NULL,           0,         1,          0,           1,        -1 },
-    { "gnome-calculator", NULL,     NULL,           0,         1,          0,           1,        -1 },
-	{ NULL,        NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	{ "Gimp",             NULL,    NULL,           0,         1,          0,           0,        -1 },
+	{ "Firefox",          NULL,    NULL,           1 << 8,    0,          0,          -1,        -1 },
+	{ "St",               NULL,    NULL,           0,         0,          1,           0,        -1 },
+    { "Brave",            NULL,    NULL,           0,         0,          0,           1,        -1 },
+    { "Tk",               NULL,    NULL,           0,         1,          0,           1,        -1 },
+    { "python3.9",        NULL,    NULL,           0,         1,          0,           1,        -1 },
+    { "gnome-calculator", NULL,    NULL,           0,         1,          0,           1,        -1 },
+	{ NULL,               NULL,    "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
 /* layout(s) */
 static float mfact              = 0.55; /* factor of master area size [0.05..0.95] */
 static int nmaster              = 1;    /* number of clients in master area */
-static int resizehints          = 0;    /* 1 means respect size hints in tiled resizals */
+static int resizehints          = 1;    /* 1 means respect size hints in tiled resizals */
 static const int decorhints     = 1;    /* 1 means respect decoration hints */
 static const int lockfullscreen = 1;    /* 1 will force focus on the fullscreen window */
 
