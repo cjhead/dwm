@@ -206,10 +206,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
 
-    { 0,                            XK_Print,  spawn,          SHCMD("maimfull") },
-    { ShiftMask,                    XK_Print,  spawn,          SHCMD("maimclip") },
-    { MODKEY,                       XK_Print,  spawn,          SHCMD("maimcb") },
-    { MODKEY|ShiftMask,             XK_Print,  spawn,          SHCMD("maimcb_link") },
+    { 0,                            XK_Print,  spawn,          SHCMD("maim_menu") },
     { 0, XF86XK_AudioMute,                     spawn,          SHCMD("pamixer -t; sigdwmblocks 1") },
     { 0, XF86XK_AudioRaiseVolume,              spawn,          SHCMD("pamixer -i 5; sigdwmblocks 1") },
     { 0, XF86XK_AudioLowerVolume,              spawn,          SHCMD("pamixer -d 5; sigdwmblocks 1") },
