@@ -3,18 +3,17 @@
 /* appearance */
 static unsigned int borderpx        = 1;        /* border pixel of windows */
 static unsigned int snap            = 32;       /* snap pixel */
-static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
-static const unsigned int gappih    = 0;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 0;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 0;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 0;       /* vert outer gap between windows and screen edge */
-static const int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
+static int swallowfloating          = 0;        /* 1 means swallow floating windows by default */
+static unsigned int gappih          = 0;       /* horiz inner gap between windows */
+static unsigned int gappiv          = 0;       /* vert inner gap between windows */
+static unsigned int gappoh          = 0;       /* horiz outer gap between windows and screen edge */
+static unsigned int gappov          = 0;       /* vert outer gap between windows and screen edge */
+static int smartgaps                = 1;        /* 1 means no outer gap when there is only one window */
 static int showbar                  = 1;        /* 0 means no bar */
 static int topbar                   = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = {
-    "Hack Nerd Font:size=10:antialias=true:autohint=true",
-    "JoyPixels:pixelsize=12:antialias=true:autohint=true" };
+static char font[] = "Hack Nerd Font:size=10:antialias=true:autohint=true";
 static char dmenufont[]             = "Hack Nerd Font:size=10:antialias=true:autohint=true";
+static const char *fonts[]          = { font };
 static char col0[]                  = "#ffffff";
 static char col1[]                  = "#ffffff";
 static char col2[]                  = "#ffffff";
@@ -83,9 +82,9 @@ static const Rule rules[] = {
 static float mfact              = 0.55; /* factor of master area size [0.05..0.95] */
 static int nmaster              = 1;    /* number of clients in master area */
 static int resizehints          = 0;    /* 1 means respect size hints in tiled resizals */
-static const int decorhints     = 1;    /* 1 means respect decoration hints */
-static const int lockfullscreen = 1;    /* 1 will force focus on the fullscreen window */
-static const int attachdirection = 2;    /* 0 default, 1 above, 2 aside, 3 below, 4 bottom, 5 top */
+static int decorhints           = 1;    /* 1 means respect decoration hints */
+static int lockfullscreen       = 1;    /* 1 will force focus on the fullscreen window */
+static int attachdirection      = 2;    /* 0 default, 1 above, 2 aside, 3 below, 4 bottom, 5 top */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -114,24 +113,20 @@ static const char *termcmd[]  = { "st", NULL };
  * Xresources preferences to load at startup
  */
 ResourcePref resources[] = {
-		// { "font",               STRING,  &font },
+		{ "font",               STRING,  &font },
 		{ "dmenufont",          STRING,  &dmenufont },
-		// { "normbgcolor",        STRING,  &normbgcolor },
-		// { "normbordercolor",    STRING,  &normbordercolor },
-		// { "normfgcolor",        STRING,  &normfgcolor },
-		// { "selbgcolor",         STRING,  &selbgcolor },
-		// { "selbordercolor",     STRING,  &selbordercolor },
-		// { "selfgcolor",         STRING,  &selfgcolor },
         { "background",         STRING,  &normbgcolor },
         { "background",         STRING,  &normbordercolor },
         { "foreground",         STRING,  &normfgcolor },
+        { "color4",             STRING,  &selbgcolor },
+        { "color6",             STRING,  &selbordercolor },
         { "color0",             STRING,  &col0 },
         { "color1",             STRING,  &col1 },
         { "color2",             STRING,  &col2 },
         { "color3",             STRING,  &col3 },
-        { "color4",             STRING,  &selbgcolor },
+        { "color4",             STRING,  &col4 },
         { "color5",             STRING,  &col5 },
-        { "color6",             STRING,  &selbordercolor },
+        { "color6",             STRING,  &col6 },
         { "color7",             STRING,  &col7 },
         { "color8",             STRING,  &col8 },
         { "color9",             STRING,  &col9 },
@@ -148,7 +143,16 @@ ResourcePref resources[] = {
 		{ "topbar",          	INTEGER, &topbar },
 		{ "nmaster",          	INTEGER, &nmaster },
 		{ "resizehints",       	INTEGER, &resizehints },
+        { "decorhints",         INTEGER, &decorhints },
+        { "lockfullscreen",     INTEGER, &lockfullscreen },
+        { "attachdirection",    INTEGER, &attachdirection },
 		{ "mfact",      	 	FLOAT,   &mfact },
+		{ "swallowfloating",    INTEGER, &swallowfloating },
+		{ "gappih",      	 	INTEGER, &gappih },
+		{ "gappiv",      	 	INTEGER, &gappiv },
+		{ "gappoh",      	 	INTEGER, &gappoh },
+		{ "gappov",      	 	INTEGER, &gappov },
+		{ "smartgaps",      	INTEGER, &smartgaps },
 };
 
 #include <X11/XF86keysym.h>
